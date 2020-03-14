@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="hw1part2">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath">
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/el-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/jasper.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-cs.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-pt-BR.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina-ssi.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/ecj-4.13.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/websocket-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../../../Library/Tomcat/lib/tomcat-dbcp.jar"/>
+    </path>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="hw1part2.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="hw1part2.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+              	<target name="war" description="Bundles the application as a WAR file" depends="clean, build">
+              	    <mkdir dir="WebContent/WEB-INF/classes"/>
+              	     
+              	    <copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+              	            <fileset dir="build/classes">
+              	            <include name="**/*.class"/>
+              	            </fileset>
+              	    </copy>
+              	     
+              	    <war destfile="UploadServlet30.war"
+              	        basedir="WebContent"
+              	        needxmlfile="false">
+              	    </war>
+              	</target>
+</project>
